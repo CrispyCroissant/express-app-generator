@@ -15,6 +15,7 @@ os.chdir(rootPath)
 
 funcs.install_deps()
 funcs.configure_tsconfig()
+funcs.configure_jest_config()
 funcs.configure_scripts()
 funcs.create_folder_struct(rootPath)
 

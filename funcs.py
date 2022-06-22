@@ -79,6 +79,19 @@ def configure_tsconfig() -> None:
     file.close()
 
 
+def configure_jest_config() -> None:
+    print("Configuring jest...")
+    filename = "jest.config.js"
+
+    with open(filename, "r") as file:
+        lines = file.readlines()
+
+    lines[-1] = '  modulePathIgnorePatterns: ["<rootDir>/dist/"],\n};'
+
+    with open(filename, "w") as file:
+        file.writelines(lines)
+
+
 def configure_scripts() -> None:
     print("Configuring scripts...")
     filename = "package.json"
