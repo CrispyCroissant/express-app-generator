@@ -28,7 +28,9 @@ def install_deps() -> None:
         print("Installing dev dependencies...")
         subprocess.run(["npm", "i", "-D", "dotenv", "typescript",
                         "@types/express", "@types/node",
-                        "concurrently", "nodemon"],
+                        "@types/jest", "@types/supertest",
+                        "concurrently", "nodemon", "supertest",
+                        "jest", "ts-jest", "ts-node"],
                        check=True,
                        stdout=subprocess.DEVNULL)
     except Exception as e:
@@ -43,6 +45,15 @@ def install_deps() -> None:
                        stdout=subprocess.DEVNULL)
     except:
         print("ERROR: Failed to generate tsconfig.json")
+        exit(-1)
+
+    try:
+        print("Generating jest.config...")
+        subprocess.run(["npx", "ts-jest", "config:init"],
+                       check=True,
+                       stdout=subprocess.DEVNULL)
+    except:
+        print("ERROR: Failed to generate jest.config.js")
         exit(-1)
 
 
