@@ -64,13 +64,17 @@ def configure_tsconfig() -> None:
 
     for line in file:
         line = line.strip()
+        new_line = line
 
-        newLine = line.replace('// "outDir": "./"',
-                               '"outDir": "./dist"')
-        newLine = line.replace('// "sourceMap":',
-                               '"outDir": "./dist"')
+        if '// "outDir": "./"' in line:
+            new_line = line.replace('// "outDir": "./"',
+                                   '"outDir": "./dist"')
 
-        new_file_content += newLine + "\n"
+        if'// "sourceMap": true' in line:
+            new_line = line.replace('// "sourceMap": true',
+                                   '"sourceMap": true')
+
+        new_file_content += new_line + "\n"
 
     file.close()
 
