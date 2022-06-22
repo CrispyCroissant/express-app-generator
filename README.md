@@ -12,7 +12,7 @@ A simple Express app skeleton generator for creating an Express project with Typ
 ## Usage/Examples
 
 ```
-python generate.py ../project-name
+python src/generate.py ../project-name
 ```
 
 
